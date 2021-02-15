@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'net.kyori.blossom' version '1.1.0'
+}
+
+String packagePath = 'dev.frankheijden.insights.addons.towny'
+group = packagePath
+version = '1.0.0'
+description = 'TownyAddon'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://papermc.io/repo/repository/maven-public/' }
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://repo.codemc.org/repository/maven-public/' }
+}
+
+dependencies {
+    compileOnly 'com.github.InsightsPlugin:Insights:feature~addons-SNAPSHOT'
+    compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
+    compileOnly 'com.github.TownyAdvanced:Towny:0.96.7.0'
+}
+
+blossom {
+    replaceTokenIn 'src/main/java/dev/frankheijden/insights/addons/towny/TownyAddon.java'
+    replaceToken '{version}', version
+}
